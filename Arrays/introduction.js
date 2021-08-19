@@ -13,9 +13,9 @@ console.log("\nInsert at Beginning");
 console.log(character_array);
 
 character_array.splice(2,0,'z'); //O(n)
-console.log("\nInsert anywhere");
+console.log("\nInsert at index 2");
 console.log(character_array);
 
 character_array.splice(2,2); //O(n)
-console.log("\nDelete");
+console.log("\nDelete 2 elements from index 2");
 console.log(character_array);
