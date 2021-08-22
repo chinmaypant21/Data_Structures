@@ -2,5 +2,5 @@ a.js
 a.cpp
 a.py
 *.exe
-tempcoderunner.cpp
+tempCodeRunnerFile.cpp
 /.vscode
