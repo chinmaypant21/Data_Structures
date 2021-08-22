@@ -52,5 +52,7 @@ int main()
     cout<<"\nDeleting from Between the array\n";
     print(int_array,end_index);
 
+    // we can use array[2] , 2[array] or *(array+2) for using the element at second index
+
     return 0;
 }

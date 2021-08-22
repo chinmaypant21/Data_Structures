@@ -18,21 +18,22 @@ int main()
     dynamic_array = new int[5] {0};
     //Initializing a dynamic array of size 3 with 0;
 
-    for (int x = 0; x < 5; x++) 
-		dynamic_array[x] = x+1;
+    for(int x = 0; x < 5; x++) 
+	  	dynamic_array[x] = x+1;
 
     cout<<"\nEntered array:\n";
-    for (int x = 0; x < 5; x++) {
+    for (int x = 0; x < 5; x++)
 		cout << dynamic_array[x] << " ";
-	}
 
-    // dynamic_array[5] = 6;
-    // dynamic_array[6] = 7;
+  /*Increasing size of a dynamic array*/
+  int *new_dynamic_array = new int[10] {0};
+  for(int i=0;i<5;i++) new_dynamic_array[i] = dynamic_array[i];
 
-    //  cout<<"\nEntered array:\n";
-    // for (int x = 0; x <=6; x++) {
-	// 	cout << dynamic_array[x] << " ";
-	// }
+  delete []dynamic_array; //to free up space from heap memory
+  dynamic_array=new_dynamic_array;
+  new_dynamic_array=NULL;
 
-
+  cout<<"\nEntered array:\n";
+  for (int x = 0; x < 5; x++)
+  cout << dynamic_array[x] << " ";
 }
