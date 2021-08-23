@@ -67,4 +67,11 @@ int main()
         }
         cout<<endl;
     }    
+
+    /*
+    * in C and C++, for finding addressof an element in 2D array, 
+    * compiler uses this formula
+    * address(Arr[i][j] = L0 + (i*n + j)*size_of_datatype)
+    * L0 = address of the starting index, array is of dimension m*n
+    */
 }
