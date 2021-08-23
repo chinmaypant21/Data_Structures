@@ -23,7 +23,7 @@ int main()
 
 
     int **heap_2DArray = new int*[3];
-    //heap2DArray is a pointer to pointer and creates 2D array completely in heap memory
+    //heap2DArray is a pointer to pointer by this way we can create a 2D array completely in heap memory
     for(int i=0;i<3;i++){heap_2DArray[i]=new int[2];}
 
     //assigning values
