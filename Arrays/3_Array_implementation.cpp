@@ -5,10 +5,12 @@ class Array
 {
     int length{};
     int *data;
+    int size {};
     public:
     Array(int size)
     {
         this->length=0;
+        this->size=size;
         this->data = new int[size] {0};
     }
 
@@ -17,15 +19,30 @@ class Array
         return this->data[index];
     }
 
+    void transfer()
+    {
+        int *temp_array = new int[size+1] {0};
+        for(int i=0;i<size;i++) temp_array[i] = data[i];
+        delete []data; //to free up space from heap memory
+        data=temp_array;
+        temp_array=NULL;
+        this->size++;
+    }
+
     void push(int element)
     {
+        if(size==length){
+            /*Need to create array with increased size and transfer elements from old array*/
+            transfer();
+        }
         this->data[this->length] = element;
         this->length++;
     }
 
     void pop()
     {
-        this->length--;
+        if(length==0){cout<<"\n[-]Empty Array\n";}
+        else this->length--;
     }
     
     /*We have to make operator overloading function a friend of the class
@@ -50,6 +67,7 @@ class Array
 
     void remove(int index)
     {
+        if(length<index+1){cout<<"\n[-]Undefined\n";}
         this->shift(index);
         this->length--;
     }
