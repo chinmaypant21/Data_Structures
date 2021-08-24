@@ -16,6 +16,7 @@ class Array
 
     int at(int index)
     {
+        if(index>length){cout<<"\n[-]Undefined\n";return -1;}
         return this->data[index];
     }
 

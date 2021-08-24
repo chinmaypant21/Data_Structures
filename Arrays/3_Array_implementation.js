@@ -21,9 +21,13 @@ class Array
 
     pop()
     {
-        delete this.data[this.length-1];
-        this.length--;
-        //last index = length-1
+        if(this.length==0)console.log("\n[-]Empty Array\n");
+        else
+        {
+            delete this.data[this.length-1];
+            this.length--;
+            //last index = length-1
+        }
     }
 
     shift(index)
@@ -37,6 +41,12 @@ class Array
 
     delete(index)
     {
+        if(this.length<index+1)
+        {
+            console.log("\n[-]Undefined\n");
+            return;
+
+        }
         this.shift(index);
         this.length--;
     }
