@@ -18,7 +18,6 @@ Worst case O(n) when element found at end
 Avg case O(n)
 */
 
-
 void print(int arr[],int size)
 {
     for(int i=0;i<size;i++) cout<<arr[i]<<" ";
