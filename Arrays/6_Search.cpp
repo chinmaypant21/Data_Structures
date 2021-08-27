@@ -1,4 +1,3 @@
-
 #include <iostream>
 using namespace std;
 
@@ -26,18 +25,23 @@ void print(int arr[],int size)
     cout<<endl;
 }
 
-int binary_search(int array[],int to_find,int end,int start=0)
+int binary_search(int array[],int to_find,int end,int start=0,int comparisons=0)
 {
     if (end>=start)
     {
+        comparisons++;
         int middle=(start+end)/2;
         if (to_find>array[middle])
-            return binary_search(array,to_find,end,middle+1);
+            return binary_search(array,to_find,end,middle+1,comparisons);
 
         else if (to_find<array[middle])
-            return binary_search(array,to_find,middle-1,start);
+            return binary_search(array,to_find,middle-1,start,comparisons);
 
-        else return middle;
+        else
+        {
+            cout<<"\nNum Comparisons: "<<comparisons<<endl;
+            return middle;
+        }
     }
     else return -1;
 }
@@ -49,10 +53,14 @@ int main()
     int index = linear_search(array,size,8);
     bubbleSort(array,size);
     cout<<"\nLINEAR SEARCH:";
-    if(index!=-1) cout<<"Number found at index "<<index;
+    if(index!=-1){
+        cout<<"\nNum Comparisons: "<<index;
+        cout<<"\nNumber found at index "<<index;
+    }
     else cout<<"Number not present in array";
 
-    cout<<"\nSorted Array: ";print(array,size);
+    cout<<"\nSorted Array: ";
+    print(array,size);
     cout<<"\nBINARY SEARCH: ";
     index = binary_search(array,8,size-1);
     if(index!=-1) cout<<"Number found at index "<<index;
