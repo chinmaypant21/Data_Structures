@@ -7,6 +7,13 @@ def insert_sorted(arr,to_insert):
             return
         arr[i]=arr[i-1]
 
+def checkSorted(arr):
+    for i in range(len(arr)):
+        if(arr[i]<arr[i-1]):
+            return False
+
+    return True
+
 to_insert = 5
 sorted_array= [1,3,6,11,13,14,18]
 insert_sorted(sorted_array,to_insert)
