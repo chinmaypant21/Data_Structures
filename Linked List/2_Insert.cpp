@@ -32,6 +32,7 @@ class List
         this->tail->next = newNode;
         this->tail = newNode;
         newNode->next = NULL;
+        this->length++;
     }
 };
 

@@ -15,7 +15,6 @@ class List
 {
     Node *head;
     Node *tail;
-    Node *current;
     int length {};
 };
 
