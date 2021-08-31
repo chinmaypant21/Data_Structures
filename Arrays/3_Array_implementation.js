@@ -1,7 +1,5 @@
 class Array
 {
-    // length=0;
-    // data={};
     constructor()
     {
         this.length=0;
