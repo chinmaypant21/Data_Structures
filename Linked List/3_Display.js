@@ -14,16 +14,10 @@ class List
         const firstNode = new Node(value)
         this.head = firstNode
         this.tail = firstNode
-        this.length++
+        this.length = 1
     }
 
-    /**
-     * insert method takes a value (data) as parameter.
-     * It creates a newnode object of type node with data=value
-     * Currently tail is the last element of list, and we set next of the tail to reference newNode
-     * Now the end node = newNode thus now tail is a reference to newnode
-     */
-    insert(value)
+    push(value)
     {
         const newNode = new Node(value)
         this.tail.next = newNode
@@ -63,8 +57,8 @@ class List
 }
 
 l = new List(5)
-l.insert(6)
-l.insert(7)
-l.insert(8)
+l.push(6)
+l.push(7)
+l.push(8)
 l.displayIterative()
 l.displayReflexive()

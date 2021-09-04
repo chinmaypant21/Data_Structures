@@ -28,13 +28,7 @@ class List
         this->length++;
     }
 
-    /**
-     * insert method takes a value (data) as parameter.
-     * It creates a newnode object of type node with data=value
-     * Currently tail is the last element of list, and we set next of the tail to point to newNode
-     * Now the end node = newNode thus it points tail to newnode
-     */
-    void insert(int value)
+    void push(int value)
     {
         Node *newNode = new Node(value);
         this->tail->next = newNode;
@@ -78,8 +72,8 @@ class List
 int main()
 {
     List l(5);
-    l.insert(6);
-    l.insert(7);
+    l.push(6);
+    l.push(7);
     l.displayIterative();
     l.displayRecursive();
 }

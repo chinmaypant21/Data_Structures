@@ -13,13 +13,8 @@ class List:
         self.tail = firstNode
         self.length=1
 
-    '''
-     * insert method takes a value (data) as parameter.
-     * It creates a newnode object of type node and assign data=value
-     * Currently tail is the last element of list, and we set next of the tail to reference newNode
-     * Now the end node = newNode thus now tail is a reference to newnode
-     '''
-    def insert(self,value):
+
+    def add(self,value):
 
         newNode = Node(value)
         self.tail.next = newNode
@@ -53,8 +48,8 @@ class List:
         self.__recursivePrinter(start)
 
 l = List(5)
-l.insert(6)
-l.insert(7)
-l.insert(8)
+l.add(6)
+l.add(7)
+l.add(8)
 l.displayIterative()
 l.displayRecursive()
