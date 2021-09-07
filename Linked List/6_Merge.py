@@ -72,7 +72,11 @@ class List:
                 first = first.next     
 
         last.next = None
-
+        '''Now, if any of the pointers pointing first or second list are not null,
+        It means that some values are still remaining in that List.
+        So we point out next pointer of out last node to that Node(because definitely, the value(s))
+        that are remaining in that node are greater that the value at last node and all Lists are sorted.
+        '''
         if(first!=None):
              last.next=first
         elif(second!=None):
