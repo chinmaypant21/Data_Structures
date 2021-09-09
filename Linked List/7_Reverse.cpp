@@ -67,16 +67,16 @@ class List
         }
     }
 
+    /**
+     * Reversing using slider Pointers method.
+     * @brief In this method, we create thiree pointers, one pointing to the
+     * current element we are working on, one on the previous element, and one on the next element
+     * At starting prev and curr pointer are pointing to NULL, and after pointer to head
+     * then we slide pointers to next location and while doing it, we point the 'next' of current to 
+     * previous. We do this untill 'after' pointer gets to NULL.
+     */
     void reverse_nodes()
     {
-        /* Reversing using slider Pointers method.*/
-        /**
-         * @brief In this method, we create thiree pointers, one pointing to the
-         * current element we are working on, one on the previous element, and one on the next element
-         * At starting prev and curr pointer are pointing to NULL, and after pointer to head
-         * then we slide pointers to next location and while doing it, we point the 'next' of current to 
-         * previous. We do this untill 'after' pointer gets to NULL.
-         */
         Node *previous = NULL;
         Node *current = NULL;
         Node *after = head;
