@@ -16,10 +16,10 @@ class Node
 class List
 {
     Node *tail;
-    Node *head;
     int length {};
 
     public:
+    Node *head;
     List(int value=0)
     {
         Node *newNode = new Node(value);
@@ -89,6 +89,22 @@ class List
         }
         head=current;
     }
+
+    void reverseRecursion()
+    {
+        reverse_recursion_method(NULL,this->head);
+    }
+
+    void reverse_recursion_method(Node *previous,Node *current)
+    {
+        if(current==NULL)
+        {
+            this->head=previous;
+            return;
+        }
+        reverse_recursion_method(current,current->next);
+        current->next=previous;
+    }
 };
 
 int main()
@@ -97,8 +113,8 @@ int main()
     l.push(3);
     l.push(4);
     l.push(6);
-    l.reverse_nodes();
-
+    Node *n=NULL;
+    l.reverseRecursion();
     l.display();
     return 0;
 }
