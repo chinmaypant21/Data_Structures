@@ -42,12 +42,6 @@ class DLList
         this->length++;
     }
 
-    void pop() //O(1)
-    {
-        this->tail  = this->tail->previous;
-        this->tail->next = NULL;
-    }
-
     void display()
     {
         Node *current = this->head;
@@ -59,9 +53,29 @@ class DLList
         cout<<endl;
     }
 
-    void insert(int index, int value)
+    void insert(int index, int value) // min O(1) max O(n)
     {
-        
+        Node *newNode = new Node(value);
+        this->length++;
+        if(index==0)
+        {
+            newNode->next = head;
+            head->previous = newNode;
+            newNode->previous = NULL;
+            head = newNode;
+            return;
+        }
+
+        Node *current = head;
+        for(int i=1;i<index;i++)
+        {
+            current = current->next;
+        }
+
+        newNode->next = current->next;
+        newNode->previous = current;
+        if(current->next != NULL) current->next->previous = newNode;
+        current->next = newNode;
     }
 
 };
@@ -73,7 +87,9 @@ int main()
     dll.push(2);
     dll.push(9);
     dll.display();
-    dll.pop();
+    dll.insert(0,6);
     dll.display();
-
+    dll.insert(2,11);
+    dll.insert(6,15);
+    dll.display();
 }
