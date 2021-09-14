@@ -7,11 +7,6 @@ class Node
     int data; 
     Node *next;
     Node *previous;
-    /*In a Singly linked list, there is only one pointer that points to the next of the element
-    due to this reason, node was not able to access the element previous to that element
-    In a doubly linked list, have two pointers previous and next which keeps track of the node
-    previous to the current node and node after the current node in the List, thus it is DOUBLY LINKED.*/
-
      Node(int value=0)
     {
         this->data=value;
@@ -51,7 +46,6 @@ class DLList
     {
         this->tail  = this->tail->previous;
         this->tail->next = NULL;
-        /*In a DLL, pop has became */
     }
 
     void display()
@@ -65,6 +59,10 @@ class DLList
         cout<<endl;
     }
 
+    void insert(int index, int value)
+    {
+        
+    }
 
 };
 
