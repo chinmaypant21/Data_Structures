@@ -25,6 +25,7 @@ class List
         Node *newNode = new Node(value);
         this->head = newNode;
         this->tail = newNode;
+        tail->next=NULL;
         this->length++;
     }
 
