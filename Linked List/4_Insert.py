@@ -28,6 +28,9 @@ class List:
 
         newNode = Node(value)
         index_pointer = self.head
+        if(index==self.length):
+            self.tail=newNode
+
         self.length+=1
         '''If we have to insert at head, in that case there is no element before that
         so we have to change the statement for self case'''
@@ -53,5 +56,5 @@ l = List(5)
 l.push(6)
 l.push(7)
 l.push(8)
-l.insert(4,0)
+l.insert(4,4)
 l.display()

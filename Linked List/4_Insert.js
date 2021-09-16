@@ -45,6 +45,8 @@ class List
 
         const newNode = new Node(value);
         var index_pointer = this.head;
+        if (index==this.length) this.tail=newNode;
+
         this.length++;
         /*If we have to insert at head, in that case there is no element before that
         so we have to change the statement for this case*/
@@ -68,5 +70,5 @@ l = new List(5)
 l.push(6)
 l.push(7)
 l.push(8)
-l.insert(4,0)
+l.insert(0,4)
 l.display()
