@@ -55,7 +55,14 @@ class DLList
 
     void insert(int index, int value) // min O(1) max O(n)
     {
+        if(index > this->length || index<0)
+        {
+            cout<<("\n[-]Invalid index for insert method\n");
+            return;
+        }
+
         Node *newNode = new Node(value);
+        if(index==this->length) this->tail=newNode;
         this->length++;
         if(index==0)
         {
