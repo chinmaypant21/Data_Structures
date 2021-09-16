@@ -42,45 +42,27 @@ class DLList
         this->length++;
     }
 
-    void remove(int index)
+    void reverse()
     {
-        if(index > this->length-1 || index<0)
-        {
-            cout<<("\n[-]Invalid index for remove method\n");
-            return;
-        }
-
-        this->length--;
         Node *current = this->head;
-        if(index==0)
+        this->tail = this->head;
+        for(int i=0;i<length;i++)
         {
-            this->head = this->head->next;
-            if(head!=NULL) this->head->previous=NULL;
-            delete current;
-            return;
+            swap(current->previous,current->next);
+            if(current->previous!=NULL) current = current->previous;
         }
-        /*
-        Here we are going to the node which we have to remove and then assigning the
-        "next" pointer of previous node to current's next and "previous" of  next node
-        to current's previous node.
+        this->head=current;
+    }
 
-        We could also have done this by going to the element previous to the index element
-        and set its next to next's next (means we are just kicking out the given index element)
-        and current->next->previous to current.
-        */
-        for(int i=0;i<index;i++)
+    void reverse_tail()
+    {
+        Node *current = this->tail;
+        head = this->tail;
+        for(int i=0;i<length;i++)
         {
-            current = current->next;
+            swap(current->previous,current->next);
+            if(current->next!=NULL) current = current->next;
         }
-
-        current->previous->next = current->next;
-        if (current->next!=NULL)  //if curent is not the last node of DLL
-        {
-            current->next->previous=current->previous;
-        }
-
-        else this->tail = current->previous;
-        delete current;
     }
 
     void display()
@@ -104,6 +86,7 @@ int main()
     dll.push(2);
     dll.push(9);
     dll.display();
-    dll.remove(0);
+    dll.reverse();
+    // dll.reverse_tail();
     dll.display();
 }
