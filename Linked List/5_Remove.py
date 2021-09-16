@@ -42,6 +42,9 @@ class List:
         for i in range(index-1):
             index_pointer = index_pointer.next
         index_pointer.next = index_pointer.next.next
+        if(index_pointer.next==None):
+            self.tail = index_pointer
+
     
     def display(self):
         current = self.head
