@@ -58,6 +58,7 @@ class List
         var index_pointer = this.head;
         for(var i=0;i<index-1;i++) index_pointer = index_pointer.next;
         index_pointer.next = index_pointer.next.next;
+        if(index_pointer.next==null) this.tail = index_pointer;
     }
 }
 
@@ -65,5 +66,5 @@ l = new List(5)
 l.push(6)
 l.push(7)
 l.push(8)
-l.remove(2)
+l.remove(3)
 l.display()

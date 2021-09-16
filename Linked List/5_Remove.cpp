@@ -15,6 +15,7 @@ class Node
 
 class List
 {
+    public:
     Node *tail;
     Node *head;
     int length {};
@@ -50,7 +51,7 @@ class List
     /* For removing Node from a given index we have to assign the next pointer of the previous node
         from the index node to the next node of the index node, due to which index node will be thrown out
         of the linked list.
-        previous->next = index->next  ::: --> previous-> next = previous->next->next
+        previous->next = index->next  ::: previous-> next = previous->next->next
     */
     void remove(int index)
     {
@@ -69,6 +70,7 @@ class List
         Node *index_pointer = this->head;
         for(int i=0;i<index-1;i++) index_pointer = index_pointer->next;
         index_pointer->next = index_pointer->next->next;
+        if(index_pointer->next==NULL) this->tail = index_pointer;
     }
 };
 
@@ -78,7 +80,7 @@ int main()
     l.push(3);
     l.push(4);
     l.push(6);
-    l.remove(0);
+    l.remove(3);
     l.display();
     return 0;
 }
