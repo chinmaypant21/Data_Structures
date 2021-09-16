@@ -37,6 +37,8 @@ class List
 
         Node *newNode = new Node(value);
         Node *index_pointer = this->head;
+        if(index==this->length) this->tail=newNode;
+
         this->length++;
         
         /*If we have to insert at head, in that case there is no element before that
@@ -55,6 +57,7 @@ class List
         }
         newNode->next=index_pointer->next;
         index_pointer->next=newNode;
+
     }
 
     void display()
@@ -65,6 +68,7 @@ class List
             cout<<current->data<<" "; 
             current = current->next;
         }
+        cout<<endl;
     }
 
     void push(int value)
@@ -83,6 +87,7 @@ int main()
     l.push(6);
     l.push(1);
     l.push(9);
+    l.display();
     l.insert(4,0);
     l.display();
 }
