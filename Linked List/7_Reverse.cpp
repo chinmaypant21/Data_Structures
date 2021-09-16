@@ -113,7 +113,8 @@ int main()
     l.push(3);
     l.push(4);
     l.push(6);
-    Node *n=NULL;
+    //l.reverse_data();
+    //l.reverse_nodes();
     l.reverseRecursion();
     l.display();
     return 0;
