@@ -1,14 +1,15 @@
 #ifndef LIST_H //Include Guard
 #define LIST_H
 
-// #include<iostream>
-// using namespace std;
+#include<iostream>
+using namespace std;
 
 namespace cpp{
     template <class> class List;
     template <class> class Node;
 }
 
+template<class T> ostream& operator<<(ostream&, const cpp::List<T>&);//prototype
 
 template <class T>
 class cpp::Node
@@ -24,7 +25,10 @@ class cpp::Node
     }
 
     template<class> friend class List;
+    template<class U> friend ostream& ::operator<<(ostream&, const cpp::List<U>&);
 };
+
+
 
 template <class T>
 class cpp::List
@@ -44,13 +48,14 @@ class cpp::List
         this->list_length++;
     }
 
-    void push(T value);
+    void push(T);
     void pop();
-    void insert(int index,T value);
-    T at(int index);
-    T remove(int index);
+    void insert(int,T);
+    T at(int);
+    T remove(int);
     List reverse();
-
+    template<class U> friend ostream& ::operator<<(ostream&, const cpp::List<U>&);
+    //:: for defining global namespace
 };
 
 template<class T> void cpp::List<T>::push(T value)
@@ -65,7 +70,11 @@ template<class T> void cpp::List<T>::push(T value)
 
 template<class T> void cpp::List<T>::pop()
 {
-    
+    Node <T> *current = this->head;
+    list_length--;
+    for(int i=1;i<list_length;i++) current = current->next;
+    this->tail = current;
+    current->next = NULL;
 }
 
 template<class T> void cpp::List<T>::insert(int index, T value)
@@ -99,6 +108,20 @@ template<class T> cpp::List<T> cpp::List<T>::reverse()
     List<T> reverse_list;
     /* ---- */
     return reverse_list;
+}
+
+template<class T> ostream& operator<<(ostream &output,const cpp::List<T> &l)
+{
+    cpp::Node<T> *current = l.head;
+    output<<"[ ";
+    while(current !=NULL) 
+    {
+        output<<current->data;
+        if(current->next!=NULL) output<<", ";
+        current = current->next;
+    }
+    output<<" ]";
+    return output;
 }
 
 #endif /* LIST_H */
