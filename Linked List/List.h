@@ -9,7 +9,8 @@ namespace cpp{
     template <class> class Node;
 }
 
-template<class T> std::ostream& operator << (std::ostream&, const cpp::List <T>&);//prototype
+template<class T> 
+std::ostream& operator << (std::ostream&, const cpp::List <T>&);//prototype
 
 template <class T>
 class cpp::Node
@@ -25,7 +26,9 @@ class cpp::Node
     }
 
     template<class> friend class List;
-    template<class U> friend std::ostream& ::operator<< (std::ostream&, const cpp::List <U>&);
+
+    template<class U> 
+    friend std::ostream& ::operator<< (std::ostream&, const cpp::List <U>&);
 };
 
 
@@ -61,7 +64,8 @@ class cpp::List
     //:: for defining global namespace
 };
 
-template<class T> void cpp::List<T>::push(T value)
+template<class T>
+void cpp::List<T>::push(T value)
 {
     Node <T> *new_node = new Node<T>(value);
     this->tail->next   = new_node;
@@ -72,22 +76,25 @@ template<class T> void cpp::List<T>::push(T value)
     this->list_length++;
 }
 
-template<class T> void cpp::List<T>::pop()
+template<class T>
+void cpp::List<T>::pop()
 {
     list_length--;
-    Node <T> *current               = this->head;
+    Node <T> *current = this->head;
     for(int i=1;i<list_length;i++) 
-        current                     = current->next;
-    this->tail                      = current;
-    current->next                   = NULL;
+        current       = current->next;
+    this->tail        = current;
+    current->next     = NULL;
 }
 
-template<class T> void cpp::List<T>::insert(int index, T value)
+template<class T>
+void cpp::List<T>::insert(int index, T value)
 {
     
 }
 
-template<class T> T cpp::List<T>::at(int index)
+template<class T>
+T cpp::List<T>::at(int index)
 {
     if(index < 0 || index >= this -> list_length)
     {
@@ -103,12 +110,14 @@ template<class T> T cpp::List<T>::at(int index)
     return current->data;
 }
 
-template<class T> T cpp::List<T>::remove(int index)
+template<class T>
+T cpp::List<T>::remove(int index)
 {
     
 }
 
-template<class T> cpp::List<T> cpp::List<T>::reverse()
+template<class T> 
+cpp::List<T> cpp::List<T>::reverse()
 {
     List<T> reverse_list;
     /* ---- */
@@ -118,16 +127,16 @@ template<class T> cpp::List<T> cpp::List<T>::reverse()
 template<class T>
 std::ostream& operator<<(std::ostream &output,const cpp::List<T> &l)
 {
-    cpp::Node<T> *current       = l.head;
-    output                      <<"[ ";
-    while(current != NULL) 
+    cpp::Node<T> *current = l.head;
+    output << "[ ";
+    while (current != NULL)
     {
-        output                  << current->data;
-        if(current->next!=NULL)
-            output              << ", ";
-        current                 =  current->next;
+        output << current->data;
+        if (current->next != NULL)
+            output << ", ";
+        current = current->next;
     }
-    output                      << " ]";
+    output << " ]";
     return output;
 }
 
