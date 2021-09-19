@@ -37,8 +37,8 @@ template <class T>
 class cpp::List
 {
     private:
-    Node<T>         *head;
-    Node<T>         *tail;
+    Node<T>  *head;
+    Node<T>  *tail;
     int list_length = 0;
     
     public:
