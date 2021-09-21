@@ -10,5 +10,5 @@ int main()
     l.push(2);
     l.push(3);
     cout<<l<<endl;
-    cout<<"--End--";
+    cout<<"--End--"<<endl;
 }

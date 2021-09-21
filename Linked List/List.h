@@ -86,18 +86,57 @@ void cpp::List<T>::push(T value)
 template<class T>
 void cpp::List<T>::pop()
 {
+    if(list_length==0)
+    {
+        /*Exception Handling*/
+        return;
+    }
+    if(list_length==1)
+    {
+        this->head  = NULL;
+        this->tail  = NULL;
+    }
+    else
+    {
+        Node <T> *current = this->head;
+        for(int i=1;i<list_length;i++) 
+            current       = current->next;
+        this->tail        = current;
+        current->next     = NULL;
+    }
+    
     list_length--;
-    Node <T> *current = this->head;
-    for(int i=1;i<list_length;i++) 
-        current       = current->next;
-    this->tail        = current;
-    current->next     = NULL;
 }
 
 template<class T>
 void cpp::List<T>::insert(int index, T value)
 {
-    
+    if(index > this->list_length || index<0)
+    {
+        /*Exception Handling*/
+        return;
+    }
+
+    Node<T> *newNode        = new Node<T>(value);
+    Node<T> *index_pointer  = this->head;
+    if(index==this->list_length) 
+        this->tail = newNode;
+
+    this->list_length++;
+    if(index==0) 
+    {
+        newNode->next = this->head;
+        this->head    = newNode;
+        this->tail    = newNode;
+        return;
+    }
+
+    for(int i=0; i<index-1; i++)
+    {
+        index_pointer = index_pointer->next;
+    }
+    newNode->next       = index_pointer->next;
+    index_pointer->next = newNode;
 }
 
 template<class T>
