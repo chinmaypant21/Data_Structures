@@ -12,6 +12,9 @@ namespace cpp{
 template<class T> 
 std::ostream& operator << (std::ostream&, const cpp::List <T>&);//prototype
 
+template<class T>
+int len(const cpp::List<T>&);
+
 template <class T>
 class cpp::Node
 {
@@ -71,6 +74,8 @@ class cpp::List
 
     template<class U>
     friend std::ostream& ::operator<< (std::ostream&, const List<U>&);
+    template<class U>
+    friend int ::len(const List<U>&);
     //:: for defining global namespace
     List operator + (const cpp::List<T>&);
     void operator += (const cpp::List<T>&);
@@ -111,7 +116,7 @@ void cpp::List<T>::pop()
     else
     {
         Node <T> *current = this->head;
-        for(int i=1;i<list_length;i++) 
+        for(int i=1;i<list_length-1;i++) 
             current       = current->next;
         this->tail        = current;
         current->next     = NULL;
@@ -230,3 +235,9 @@ void cpp::List<T>::operator += (const cpp::List<T>& l)
     }
 }
 #endif /* LIST_H */
+
+template<class T>
+inline int len(const cpp::List<T>& l)
+{
+    return l.list_length;
+}
