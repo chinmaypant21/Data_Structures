@@ -43,7 +43,15 @@ class cpp::List
     
     public:
     List(){}
-
+    List (const List &l) //deep copy
+    {
+        cpp::Node<T> *current = l.head;
+        for(int i=0; i<l.list_length;i++)
+        {
+            this->push(current->data);
+            current = current->next;
+        }
+    }
 
     List(T value)
     {
