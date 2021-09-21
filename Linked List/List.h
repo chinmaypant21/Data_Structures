@@ -43,6 +43,8 @@ class cpp::List
     
     public:
     List(){}
+
+
     List(T value)
     {
         Node <T> *newNode   = new Node<T>(value);
@@ -60,8 +62,10 @@ class cpp::List
     List reverse();
 
     template<class U>
-    friend std::ostream& ::operator<< (std::ostream&, const cpp::List<U>&);
+    friend std::ostream& ::operator<< (std::ostream&, const List<U>&);
     //:: for defining global namespace
+    List operator + (const cpp::List<T>&);
+    void operator += (const cpp::List<T>&);
 };
 
 template<class T>
@@ -171,7 +175,7 @@ cpp::List<T> cpp::List<T>::reverse()
 }
 
 template<class T>
-std::ostream& operator<<(std::ostream &output,const cpp::List<T> &l)
+std::ostream& operator << (std::ostream &output,const cpp::List<T> &l)
 {
     cpp::Node<T> *current = l.head;
     output << "[ ";
@@ -186,4 +190,35 @@ std::ostream& operator<<(std::ostream &output,const cpp::List<T> &l)
     return output;
 }
 
+template<class T>
+cpp::List<T> cpp::List<T>::operator + (const cpp::List<T>& l)
+{
+    cpp::List<T> _result_list;
+    cpp::Node<T> *current = this->head;
+
+    for(int i=0;i<this->list_length;i++)
+    {
+        _result_list.push(current->data);
+        current = current->next;
+    }
+
+    current = l.head;
+    for(int i=0;i<l.list_length;i++)
+    {
+        _result_list.push(current->data);
+        current = current->next;
+    }
+    return _result_list;
+}
+
+template<class T>
+void cpp::List<T>::operator += (const cpp::List<T>& l)
+{
+    cpp::Node<T> *current = l.head;
+    for(int i=0;i<l.list_length;i++)
+    {
+        this->push(current->data);
+        current = current->next;
+    }
+}
 #endif /* LIST_H */
