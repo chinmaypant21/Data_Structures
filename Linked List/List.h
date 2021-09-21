@@ -68,11 +68,18 @@ template<class T>
 void cpp::List<T>::push(T value)
 {
     Node <T> *new_node = new Node<T>(value);
-    this->tail->next   = new_node;
-    this->tail         = new_node;
-    new_node->next     = NULL;
-    if(!list_length) 
-        this->head     = new_node;
+    if(!list_length)
+    {
+        this->head       = new_node;
+        this->tail       = new_node;
+    }  
+    else
+    {
+        this->tail->next = new_node;
+        this->tail       = new_node;
+    }
+    new_node->next       = NULL;
+
     this->list_length++;
 }
 
