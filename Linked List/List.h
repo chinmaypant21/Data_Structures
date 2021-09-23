@@ -46,7 +46,7 @@ class cpp::List
     
     public:
     List(){}
-    List (const List &l) //deep copy
+    List(const List &l) //deep copy
     {
         cpp::Node<T> *current = l.head;
         for(int i=0; i<l.list_length;i++)
@@ -56,6 +56,13 @@ class cpp::List
         }
     }
 
+    List(T arr[],int size_of_arr)
+    {
+        for(int i=0;i<size_of_arr;i++)
+        {
+            this->push(arr[i]);
+        }
+    }
     List(T value)
     {
         Node <T> *newNode   = new Node<T>(value);
