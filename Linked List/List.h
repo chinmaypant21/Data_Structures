@@ -130,8 +130,10 @@ void cpp::List<T>::insert(int index, T value)
 {
     if(index > this->list_length || index<0)
     {
-        /*Exception Handling*/
-        return;
+        std::cerr << "exception: cpp::List 'insert' method:  passed index '"
+                  << index << "' not in index range [0," 
+                  << this->list_length << "]\n";
+        exit(-1);
     }
 
     Node<T> *newNode        = new Node<T>(value);
@@ -161,7 +163,7 @@ T cpp::List<T>::at(int index)
 {
     if(index < 0 || index >= this -> list_length)
     {
-        std::cerr << "cpp::List 'at' method:  passed index '"
+        std::cerr << "exception: cpp::List 'at' method:  passed index '"
                   << index << "' not in index range [0," 
                   << this->list_length-1 << "]\n";
         exit(-1);
