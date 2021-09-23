@@ -81,11 +81,14 @@ class cpp::List
 
     template<class U>
     friend std::ostream& ::operator<< (std::ostream&, const List<U>&);
+
     template<class U>
     friend int ::len(const List<U>&);
     //:: for defining global namespace
-    List operator + (const cpp::List<T>&);
+
+    List operator +  (const cpp::List<T>&);
     void operator += (const cpp::List<T>&);
+    T    operator [] (int index);
 };
 
 template<class T>
@@ -112,7 +115,8 @@ void cpp::List<T>::pop()
 {
     if(list_length==0)
     {
-        /*Exception Handling*/
+        std::cerr << "exception: cpp::List can not pop from an empty list\n";
+        exit(-1);
         return;
     }
     if(list_length==1)
@@ -216,6 +220,12 @@ std::ostream& operator << (std::ostream &output,const cpp::List<T> &l)
 }
 
 template<class T>
+inline int len(const cpp::List<T>& l)
+{
+    return l.list_length;
+}
+
+template<class T>
 cpp::List<T> cpp::List<T>::operator + (const cpp::List<T>& l)
 {
     cpp::List<T> _result_list;
@@ -246,10 +256,16 @@ void cpp::List<T>::operator += (const cpp::List<T>& l)
         current = current->next;
     }
 }
-#endif /* LIST_H */
 
 template<class T>
-inline int len(const cpp::List<T>& l)
+T cpp::List<T>::operator [] (const int index)
 {
-    return l.list_length;
+    if(index < 0 || index >= this -> list_length)
+    {
+        std::cerr << "exception: cpp::List out of bounds\n";
+        exit(-1);
+    }
+    return at(index);
 }
+
+#endif /* LIST_H */
