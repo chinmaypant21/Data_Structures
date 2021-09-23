@@ -10,5 +10,6 @@ int main()
     l.push(2);
     l.push(3);
     cout<<l<<endl;
+    cout<<l.at(2)<<endl;
     cout<<"--End--"<<endl;
 }

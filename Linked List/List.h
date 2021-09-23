@@ -161,7 +161,10 @@ T cpp::List<T>::at(int index)
 {
     if(index < 0 || index >= this -> list_length)
     {
-        /*Exception Handle*/
+        std::cerr << "cpp::List 'at' method:  passed index '"
+                  << index << "' not in index range [0," 
+                  << this->list_length-1 << "]\n";
+        exit(-1);
     }
 
     Node<T> *current = this->head;
