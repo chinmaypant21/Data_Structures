@@ -9,4 +9,5 @@ a.py
 *.exe
 tempCodeRunnerFile.cpp
 tempCodeRunnerFile.py
+tempCodeRunnerFile.js
 /.vscode
