@@ -73,7 +73,7 @@ int main()
             if(parenthesis.pop() == -1)
             {
                 cout<<"\n[-]Parenthesis not opened properly at col "<<col_counter;
-                cout<<" and line counter "<<line_counter<<endl;
+                cout<<" and line "<<line_counter<<endl;
             }
         }
 
@@ -85,7 +85,7 @@ int main()
             if(curly_bracket.pop() == -1)
             {
                 cout<<"\n[-]Curly Brackets not opened properly at col "<<col_counter;
-                cout<<" and line counter "<<line_counter<<endl;
+                cout<<" and line "<<line_counter<<endl;
             }
         }
 
