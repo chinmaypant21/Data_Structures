@@ -80,5 +80,4 @@ int main()
     s.pop();
     s.pop();
     s.display();
-
 }
