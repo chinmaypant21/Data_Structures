@@ -40,9 +40,7 @@ class Stack:
     def display(self):
     
         print("[",end=" ")
-        # for(int i=0;i<=top;i++)
         for i in range(0,self.top+1):
-            # print(self.data[i],", ")
             print(self.data[i],end=", ")
         print("]")
         
