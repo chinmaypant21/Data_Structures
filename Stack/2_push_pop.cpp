@@ -27,14 +27,14 @@ class Stack
         this->data[top] = element;
     }
 
-    void pop()
+    int pop()
     {
         if(isEmpty())
         {
             cout<<"Can not pop from an empty stack";
-            return;
+            return -1;
         }
-        top--;
+        return data[top--];
     }
 
     //if top is less than 0 it means it is not poiting to any element of stack 

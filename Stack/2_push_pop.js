@@ -1,39 +1,34 @@
 class Stack
 {
-    /**
-     * In a stack, we add and remove elements only from the top of the stack.
-     * We can not access an element directly that is not at the top of the stack
-     * For implementing a stack, we need the size of stack, top pointer of stack to maintain
-     * operations and a data structure (like array or linked list) to store elements.
-     */
     constructor(size)
     {
         this.size = size;
-        this.top  = -1; //when stack is empty so the top pointer will not pointing to any location of stack
+        this.top  = -1;
         this.data = {};
     }
 
     
     push(element)
     {
-        if(isFull())
+        if(this.isFull())
         {
             console.log("Can not push to already full stack");
             return;
         }
 
-        top++;
-        this.data[top] = element;
+        this.top++;
+        this.data[this.top] = element;
     }
 
     pop()
     {
-        if(isEmpty())
+        if(this.isEmpty())
         {
             console.log("Can not pop from an empty stack");
-            return;
+            return -1;
         }
-        top--;
+        // top--;
+        return this.data[this.top--];
     }
 
     //if top is less than 0 it means it is not poiting to any element of stack 
@@ -55,15 +50,20 @@ class Stack
 
     display()
     {
-        console.log("[ ");
-        for(let i=0;i<=top;i++)
+        for(let i=0;i<=this.top;i++)
         {
-            console.log(data[i],", ");
+            console.log(this.data[i]);
         }
-        console.log("]");
     }
 
 }
 
 s = new Stack(5);
-console.log(s);
+s.push(1);
+s.push(4);
+s.push(3);
+s.display();
+console.log('popped: ',s.pop());
+s.pop();
+s.pop();
+s.display();
