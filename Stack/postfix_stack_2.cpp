@@ -1,9 +1,10 @@
 #include <iostream>
 using namespace std;
 
-int num_operators = 4;
-char operator_array[] = {'+','-','*','/'};
-int precedence_val_arr[] = {1,1,2,2};
+#define NUM_OPERATORS 7
+char operator_array[] = {'+','-','*','/','^','(',')'};
+int out_precedence_val[] = {1,1,3,3,6,7,0};
+int in_precedence_val[]  = {2,2,4,4,5,0};
 
 class Stack
 {
@@ -41,8 +42,6 @@ class Stack
         return data[top--];
     }
 
-    //if top is less than 0 it means it is not poiting to any element of stack 
-    //thus stack is empty
     bool isEmpty()
     {
         if (this->top < 0)
@@ -93,61 +92,67 @@ inline bool isOperator(char c)
     return false;
 }
 
-int precedence(char opr)
+int in_precedence(char opr)
 {
-    for(int i=0; i<num_operators; i++)
+    for(int i=0; i<NUM_OPERATORS; i++)
     {
         if(operator_array[i] == opr)
-            return precedence_val_arr[i];
+            return in_precedence_val[i];
     }
     return -1;
 }
 
+int out_precedence(char opr)
+{
+    for(int i=0; i<NUM_OPERATORS; i++)
+    {
+        if(operator_array[i] == opr)
+            return out_precedence_val[i];
+    }
+    return -1;
+
+}
+
+
 int main()
 {
-    // string statement = "a*d/e-b+c";
-    string statement = "a+b*c-d/e";
+    string statement = "((a+b)*c)-d^e^f";
     string postfix = "";
-    Stack operator_precedence_stack(statement.length());
-
-    for(int i=0; i<statement.length(); i++)
+    Stack operator_stack(statement.length());
+    for(int i=0;i<statement.length();i++)
     {
         if(isOperator(statement[i]))
         {
-            cout<<"isoperator: "<<statement[i]<<endl;
-            if(precedence(statement[i]) > precedence(operator_precedence_stack.atTop()))
+            if(statement[i]==')')
             {
-                operator_precedence_stack.push(statement[i]);
+                while(in_precedence(operator_stack.atTop()) != out_precedence(statement[i]))
+                {
+                    postfix+=operator_stack.pop();
+                }
+                operator_stack.pop();
+            }
+
+            else if(out_precedence(statement[i]) > in_precedence(operator_stack.atTop()))
+            {
+                operator_stack.push(statement[i]);
             }
 
             else
             {
-                while(true)
+                while(out_precedence(statement[i]) < in_precedence(operator_stack.atTop()))
                 {
-                    if(precedence(statement[i])>precedence(operator_precedence_stack.atTop()))
-                    {
-                        operator_precedence_stack.push(statement[i]);
-                        break;
-                    }
-
-                    else
-                    {
-                        postfix+=operator_precedence_stack.pop();
-                    }
+                    postfix+=operator_stack.pop();
                 }
-            }             
+                operator_stack.push(statement[i]);
+            }
         }
 
-        else
-        {
-            postfix+=statement[i];
-        }
+        else postfix+=statement[i];
     }
     
-    while(operator_precedence_stack.atTop())
-    {
-        postfix+= operator_precedence_stack.pop();
-    }
+    while(operator_stack.atTop())
+        postfix+= operator_stack.pop();
+
     cout<<"\nInfix: "<<statement<<endl<<"Postfix: "<<postfix<<endl;
 }
 
