@@ -1,4 +1,3 @@
-var precedence_val_arr = [1,1,2,2];
 var operator_dict = {
     '\0':0,
     '+':1,
