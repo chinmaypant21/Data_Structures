@@ -34,7 +34,7 @@ class List
     {
         if(index > this.list_length || index<0)
         {
-            console.log("exception: cpp::List 'insert' method:  passed index '",
+            console.log("exception: List 'insert' method:  passed index '",
                         index,"' not in index range [0," ,this.list_length, "]\n");
             exit(-1);
         }
