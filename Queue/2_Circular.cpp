@@ -55,8 +55,8 @@ class Queue
         }
         else
         {
-            this->front = this->nextIndex(front);
-            int temp = queue_arr[front];
+            this->front      = this->nextIndex(front);
+            int temp         = queue_arr[front];
             queue_arr[front] = 0;
             return temp;
         }
@@ -87,6 +87,7 @@ class Queue
 
 int main()
 {
+    //if size of queue is n, so we can only use n-1 spaces, because one space is reserved for pointing at front 
     Queue q(7);
     q.enqueue(1);
     q.enqueue(2);
@@ -100,7 +101,7 @@ int main()
     q.enqueue(8);
     q.print();
 
-    cout<<"Array: \n";
-    q.disp();
+    // cout<<"Array: \n";
+    // q.disp();
 
 }
