@@ -33,7 +33,7 @@ class Queue
 
     void enqueue(int value) // O(1)
     {
-        if(this->end == this->size)
+        if(this->end == this->size-1)
             cerr<<"\n[-] Queue is full\n";
         else
         {
@@ -75,7 +75,7 @@ class Queue
 
 int main()
 {
-    Queue q(6);
+    Queue q(5);
     q.enqueue(1);
     q.enqueue(2);
     q.enqueue(3);
