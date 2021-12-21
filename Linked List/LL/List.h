@@ -2,7 +2,6 @@
 #define LIST_H
 
 #include <iostream>
-// using namespace std;
 
 namespace cpp{
     template <class> class List;
@@ -32,9 +31,10 @@ class cpp::Node
 
     template<class U> 
     friend std::ostream& ::operator<< (std::ostream&, const cpp::List <U>&);
+
+    template<class U>
+    friend void merge(cpp::List<U>*,cpp::List<U>*);
 };
-
-
 
 template <class T>
 class cpp::List
@@ -81,6 +81,10 @@ class cpp::List
 
     template<class U>
     friend std::ostream& ::operator<< (std::ostream&, const List<U>&);
+    
+    //Needs to be defined in the file where it is imported using the cpp namespace
+    template<class U>
+    friend void merge(List<U>*,List<U>*);
 
     template<class U>
     friend int ::len(const List<U>&);
@@ -224,6 +228,8 @@ inline int len(const cpp::List<T>& l)
 {
     return l.list_length;
 }
+
+
 
 template<class T>
 cpp::List<T> cpp::List<T>::operator + (const cpp::List<T>& l)
