@@ -223,6 +223,25 @@ std::ostream& operator << (std::ostream &output,const cpp::List<T> &l)
     return output;
 }
 
+/*
+template <class T>
+void merge(::List<T> *l1,::List<T> *l2)
+{
+    Node<T>* current = l1->head;
+    Node<T>* after   = l2->head;
+    Node<T>* temp    = NULL;
+
+    while(after != NULL)
+    {
+        temp    = current->next;
+        current->next = after;
+        after = temp;
+        temp = current->next->next;
+        current = current->next;
+    }
+}
+*/
+
 template<class T>
 inline int len(const cpp::List<T>& l)
 {
